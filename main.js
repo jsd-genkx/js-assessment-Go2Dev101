@@ -13,8 +13,6 @@ const pathCharacter = "*";
 class Field {
   constructor(field = [[]]) {
     this.field = field;
-
-    // Replace with your own code //
     // Set the home position at (0, 0) before the game starts
     this.positionRow = 0;
     this.positionCol = 0;
@@ -24,47 +22,40 @@ class Field {
   // Print field //
   print() {
     clear();
-    while (true) {
-      const command = prompt("input :");
-    //   console.log(`your input ${command}`);
-      if (command == "r") {
-        console.log(this.positionRow);
-        console.log(this.positionCol);
-        this.positionCol++;
-        this.field[this.positionRow][this.positionCol] = pathCharacter;
-      } else if (command == "l") {
-        console.log(this.positionRow);
-        console.log(this.positionCol);
-        this.positionCol--;
-        this.field[this.positionRow][this.positionCol] = pathCharacter;
-      }
-	  else if (command == "u") {
-        console.log(this.positionRow);
-        console.log(this.positionCol);
-        this.positionRow--;
-        this.field[this.positionRow][this.positionCol] = pathCharacter;
-      }
-	  else if (command == "d") {
-        console.log(this.positionRow);
-        console.log(this.positionCol);
-        this.positionRow++;
-        this.field[this.positionRow][this.positionCol] = pathCharacter;
-      }
-      else console.log("--------");
-
-      // Replace with your own code //
-      console.log(this.field); // Please REMOVE this line before you start your code!
+   for (let row of this.field) {
+      console.log(row.join(" "));
     }
   }
 
-  // Your Code //
+  moveRight() {
+    this.positionCol++;
+  }
+  moveLeft() {
+    this.positionCol--;
+  }
+  moveUp() {
+    this.positionRow--;
+  }
+  moveDown() {
+    this.positionRow++;
+  }
+
+ playGame() {
+    while (!this.gameOver) {
+      this.print();
+      const input = prompt("ไปเที่ยวกันมั้ยยย ? จะเดินไปก็เดินไป (r/l/u/d): ");
+      if (input === "r") this.moveUp();
+      else if (input === "l") this.moveDown();
+      else if (input === "u") this.moveLeft();
+      else if (input === "d") this.moveRight();
+      else console.log("รบกวนเลือกกรอกข้อมูลตามนี้ (r/l/u/d) เท่านั้น");
+    }
+  }
 }
 
-// Game Mode ON
-// Remark: Code example below should be deleted and use your own code.
 const newGame = new Field([
   ["░", "░", "O"],
   ["░", "O", "░"],
   ["░", "^", "░"],
 ]);
-newGame.print();
+newGame.playGame();
