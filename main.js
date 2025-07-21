@@ -46,15 +46,28 @@ class Field {
   }
 
   check() {
+    const ground = this.field[this.positionRow][this.positionCol];
 
+    if (ground === hole) {
+      console.log("You fell into a hole! Game over.");
+      this.gameOver = true;
+    } else if (ground === hat) {
+      console.log("You found the hat! You win!");
+      this.gameOver = true;
+    } else if (ground === "░") {
       this.field[this.positionRow][this.positionCol] = pathCharacter;
+    } else {
+            console.log("You went out of bounds! Game over.");
+      this.gameOver = true;
     }
-
+  }
 
   playGame() {
     while (!this.gameOver) {
       this.print();
-      const input = prompt("ไปเที่ยวกันมั้ยยย ? จะเดินไปก็เดินไป (r/l/u/d): ");
+      const input = prompt(
+        "\nไปเที่ยวกันมั้ยยย ? จะเดินไปก็เดินไป (r/l/u/d): "
+      );
       if (input === "r") this.moveRight();
       else if (input === "l") this.moveLeft();
       else if (input === "u") this.moveUp();
