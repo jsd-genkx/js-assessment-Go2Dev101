@@ -131,10 +131,18 @@
 
 ### Thinking Process
 
-1. // step 1
-2. // step 2
-3. // ...
-4. // step n
+1. ทำให้เดิน ขึ้นลง  ซ้ายขวา ให้ได้ก่อน ในprint  
+2. จากนั้นค่อยสร้าง class method 
+- moveRight
+- moveLeft
+- moveUp
+- moveDown
+เพื่อนำไปใช้ในการเดินเกม
+3. สร้างแผนที่ แบบธรรมดายังไม่random mode
+4. สร้าง fn เล่นเกม  เพื่อใส่ class method  ควบคุมการเดิน
+5.คิดวิธีเขียนcode กฎของเกม จะต้องสร้าง fn อย่างไร เขียนเงื่อนไขลำดับอย่างไร
+ุุ6.นำ fn เงื่อนไข  มาเรียกใช้ใน fn เล่นเกม
+ึ7.หาวิธีสร้าง random map
 
 _Notes:_<br>
 _- You can attach flowcharts, diagrams, and images as needed._<br>
