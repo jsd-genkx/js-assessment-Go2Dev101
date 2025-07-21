@@ -17,37 +17,48 @@ class Field {
     this.positionRow = 0;
     this.positionCol = 0;
     this.field[this.positionRow][this.positionCol] = pathCharacter;
+    this.gameOver = false;
   }
 
   // Print field //
   print() {
     clear();
-   for (let row of this.field) {
+    for (let row of this.field) {
       console.log(row.join(" "));
     }
   }
 
   moveRight() {
     this.positionCol++;
+    this.check();
   }
   moveLeft() {
     this.positionCol--;
+    this.check();
   }
   moveUp() {
     this.positionRow--;
+    this.check();
   }
   moveDown() {
     this.positionRow++;
+    this.check();
   }
 
- playGame() {
+  check() {
+
+      this.field[this.positionRow][this.positionCol] = pathCharacter;
+    }
+
+
+  playGame() {
     while (!this.gameOver) {
       this.print();
       const input = prompt("ไปเที่ยวกันมั้ยยย ? จะเดินไปก็เดินไป (r/l/u/d): ");
-      if (input === "r") this.moveUp();
-      else if (input === "l") this.moveDown();
-      else if (input === "u") this.moveLeft();
-      else if (input === "d") this.moveRight();
+      if (input === "r") this.moveRight();
+      else if (input === "l") this.moveLeft();
+      else if (input === "u") this.moveUp();
+      else if (input === "d") this.moveDown();
       else console.log("รบกวนเลือกกรอกข้อมูลตามนี้ (r/l/u/d) เท่านั้น");
     }
   }
